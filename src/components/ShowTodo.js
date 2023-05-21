@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-import { globalState } from "../App";
+import { Context } from "../context/contextApi";
 
 const ShowTodo = () => {
   const [data, setData] = useState([]);
   const [editTable, setEditTable] = useState([]);
 
-  const value = useContext(globalState);
+  const value = useContext(Context);
 
   const handleDelete = (i) => {
     const filteredData = value.editableObj.filter((item) => item.id != i.id);
@@ -13,7 +13,7 @@ const ShowTodo = () => {
     if (filteredData.length == 0) {
       value.updateSearch(false, [filteredData]);
     }
-    value.updateData(filteredData);
+    value.setUpdateData(filteredData);
   };
 
   useEffect(() => {

@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import { globalState } from "../App";
+import { Context } from "../context/contextApi";
 
 const AddTodo = () => {
   const [title, setTitle] = useState("");
   const [describe, setDescribe] = useState("");
   const [id, setId] = useState(1);
   const [search, setSearch] = useState("");
-  const value = useContext(globalState);
+  const value = useContext(Context);
 
   const handleTitleChange = (title) => {
     setTitle(title);
@@ -34,7 +34,7 @@ const AddTodo = () => {
         completed: false,
       };
       const newData = [...value.editableObj, obj];
-      value.updateData(newData);
+      value.setUpdateData(newData);
 
       setTitle("");
       setDescribe("");
